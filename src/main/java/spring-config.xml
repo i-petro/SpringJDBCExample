@@ -2,6 +2,7 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
@@ -16,7 +17,5 @@
           class="org.springframework.jdbc.core.JdbcTemplate">
         <constructor-arg ref="dataSource" />
     </bean>
-    <bean id="dao" class="database.ExampleDAOImpl">
-        <property name="jdbcTemplate" ref="jdbcTemplate" />
-    </bean>
+    <bean id="dao" class="database.DAOImpl" p:jdbcTemplate-ref="jdbcTemplate"/>
 </beans>

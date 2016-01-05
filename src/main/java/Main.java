@@ -1,4 +1,4 @@
-import database.ExampleDAO;
+import database.DAO;
 import database.Models.MyObject;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -11,7 +11,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("file:src/main/java/spring-config.xml");
-        ExampleDAO dao = ctx.getBean("dao", ExampleDAO.class);
+        DAO dao = ctx.getBean("dao", DAO.class);
         dao.add("helloWorld"+System.currentTimeMillis()%1000);
         final List<MyObject> list = dao.get();
         if(list != null)
